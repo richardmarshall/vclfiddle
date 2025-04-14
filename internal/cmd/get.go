@@ -50,9 +50,12 @@ func (o *GetOptions) Validate(args []string) error {
 }
 
 func (o *GetOptions) Run() error {
-	f, err := o.Client.Get(o.FiddleId)
+	f, valid, lints, err := o.Client.Get(o.FiddleId)
 	if err != nil {
 		return err
+	}
+	if !valid {
+		fmt.Fprintf(o.Writer, "%#v\n", lints)
 	}
 	fmt.Fprintln(o.Writer, fiddle.PrettyPrint(f))
 	return nil
