@@ -150,9 +150,9 @@ type VCLSource struct {
 }
 
 type ComputeSource struct {
-	Deps     *string `json:"deps"`
-	Main     string  `json:"main"`
-	Manifest string  `json:"manifest"`
+	Deps     string `json:"deps,omitempty"`
+	Main     string `json:"main,omitempty"`
+	Manifest string `json:"manifest,omitempty"`
 }
 
 type StreamEvent struct {
