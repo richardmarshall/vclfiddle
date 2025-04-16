@@ -150,7 +150,7 @@ func (c *Client) Update(f *Fiddle, opts ...RequestOptionFunc) (*Fiddle, error) {
 	if f.ID == "" {
 		return nil, errors.New("Fiddle ID is required")
 	}
-	path := fmt.Sprintf("/fiddle/%d", f.ID)
+	path := fmt.Sprintf("/fiddle/%s", f.ID)
 	req, err := c.NewRequest(http.MethodPut, path, f, opts...)
 	if err != nil {
 		return nil, err
